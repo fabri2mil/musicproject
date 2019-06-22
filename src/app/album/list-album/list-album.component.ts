@@ -11,7 +11,8 @@ import { AlbumService } from '../album.service';
 export class ListAlbumComponent implements OnInit {
 
   albums: Album[];
-
+  url: string = "album/add"
+  model: string = "Album"
   constructor(private albumService: AlbumService) { }
 
   ngOnInit() {

@@ -10,6 +10,8 @@ import { TrackService } from '../track.service';
 export class ListTrackComponent implements OnInit {
 
   tracks: Track[];
+  url: string = "track/add"
+  model: string = "Track"
 
   constructor(private trackService: TrackService) { }
 

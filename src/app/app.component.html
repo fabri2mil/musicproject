@@ -1,16 +1,27 @@
-<ul>
-    <li>
-        <a href="/album/">album</a>                
-    </li>
-    <li>
-        <a href="/artist/">artist</a>
-    </li>
-    <li>
-        <a href="/track/">track</a>
-    </li>
-    
-    <li>
-        <a href="/genre/">genre</a>
-    </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">{{title}}</a>        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/album/">Album </a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/artist/">Artista </a>
+            </li>            
+            <li class="nav-item">
+                    <a class="nav-link" href="/genre/">Gênero </a>
+            </li>            
+            <li class="nav-item">
+                    <a class="nav-link" href="/track/">Track </a>
+            </li>                        
+            </ul>            
+        </div>
+    </nav>
+    <div class="panel panel-default">                                                      
+        <router-outlet></router-outlet>
+    </div>
+</div>

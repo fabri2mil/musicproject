@@ -10,6 +10,8 @@ import { Artist } from '../artist';
 export class ListArtistComponent implements OnInit {
   
   artists: Artist[];
+  url: string = "/artist/add"
+  model: string = "Artista"
 
   constructor(private artistService: ArtistService) { }
 

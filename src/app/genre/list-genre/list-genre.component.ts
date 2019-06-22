@@ -10,6 +10,8 @@ import { Genre } from '../genre';
 export class ListGenreComponent implements OnInit {
 
   genres: Genre[];
+  url: string = "genre/add"
+  model: string = "Gênero"
 
   constructor(private genreService: GenreService) { }
 
