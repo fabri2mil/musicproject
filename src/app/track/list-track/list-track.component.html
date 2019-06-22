@@ -7,15 +7,17 @@
           <thead>
               <tr>
                   <th>Id</th>
-                  <th>Nome</th>                  
+                  <th>Nome</th>  
+                  <th>Detalhe</th>                
                   <th>Deletar</th>
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let track of tracks">
                   <td>{{track.Id}}</td>
-                  <td>{{track.Name}}</td>                  
-                  <td><button (click)="deletetrack(track.Id)">Delete</button></td>
+                  <td>{{track.Name}}</td>   
+                  <td><a href="track/{{track.Id}}">Ver detalhes</a></td>                
+                  <td><button (click)="deleteTrack(track.Id)">Delete</button></td>
               </tr>
           </tbody>
       </table>

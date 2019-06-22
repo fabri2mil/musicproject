@@ -8,6 +8,7 @@
               <tr>
                   <th>Id</th>
                   <th>Nome</th>                  
+                  <th>Detalhe</th>
                   <th>Deletar</th>
               </tr>
           </thead>
@@ -15,6 +16,7 @@
               <tr *ngFor="let artist of artists">
                   <td>{{artist.Id}}</td>
                   <td>{{artist.Name}}</td>                  
+                  <td><a href="artist/{{artist.Id}}">Ver detalhes</a></td>
                   <td><button (click)="deleteArtist(artist.Id)">Delete</button></td>
               </tr>
           </tbody>

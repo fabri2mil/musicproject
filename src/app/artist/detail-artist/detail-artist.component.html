@@ -1,3 +1,16 @@
-<p>
-  detail-artist works!
-</p>
+<div *ngIf="artist">
+    <div>
+        <label>Id: </label> {{artist.Id}}
+    </div>
+    <div>
+        <label>Nome: </label> {{artist.Name}}
+    </div>        
+<!-- 
+    <span class="button is-small btn-primary" *ngIf='artist.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!artist.active' (click)='updateActive(true)'>Active</span> -->
+
+    <span class="button is-small btn-danger" (click)='deleteArtist()'>Delete</span>
+
+    <hr/>
+</div>

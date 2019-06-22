@@ -7,14 +7,16 @@
           <thead>
               <tr>
                   <th>Id</th>
-                  <th>Nome</th>                  
+                  <th>Nome</th>
+                  <th>Detalhe</th>
                   <th>Deletar</th>
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let genre of genres">
                   <td>{{genre.Id}}</td>
-                  <td>{{genre.Name}}</td>                  
+                  <td>{{genre.Name}}</td>  
+                  <td><a href="genre/{{genre.Id}}">Ver detalhes</a></td>                
                   <td><button (click)="deleteGenre(genre.Id)">Delete</button></td>
               </tr>
           </tbody>

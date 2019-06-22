@@ -1,3 +1,11 @@
-<p>
-  create-genre works!
-</p>
+<h3>Create album</h3>
+<div style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="genre.Name" name="name">
+        </div>                
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

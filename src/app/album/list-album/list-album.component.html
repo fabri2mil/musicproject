@@ -8,6 +8,7 @@
               <tr>
                   <th>Id</th>
                   <th>Nome</th>                  
+                  <th>Detalhe</th>
                   <th>Deletar</th>
               </tr>
           </thead>
@@ -15,6 +16,7 @@
               <tr *ngFor="let album of albums">
                   <td>{{album.Id}}</td>
                   <td>{{album.Name}}</td>                  
+                  <td><a href="album/{{album.Id}}">Ver detalhes</a></td>                  
                   <td><button (click)="deleteAlbum(album.Id)">Delete</button></td>
               </tr>
           </tbody>

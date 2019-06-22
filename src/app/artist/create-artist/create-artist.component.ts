@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArtistService } from '../artist.service';
+import { Artist } from '../artist';
 
 @Component({
   selector: 'app-create-artist',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateArtistComponent implements OnInit {
 
-  constructor() { }
+  artist: Artist = new Artist();      
 
-  ngOnInit() {
+  constructor(private artistService: ArtistService) { }
+
+  ngOnInit() {    
+  }
+  
+
+  save() {          
+    this.artistService.createArtist(this.artist)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.artist = new Artist();
+  }
+
+  onSubmit() {
+    this.save();
   }
 
 }

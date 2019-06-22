@@ -1,3 +1,19 @@
-<p>
-  detail-track works!
-</p>
+<div *ngIf="track">
+    <div>
+        <label>Id: </label> {{track.Id}}
+    </div>
+    <div>
+        <label>Nome: </label> {{track.Name}}
+    </div>    
+    <div>
+        <label>Artista: </label> {{track.Genre.Name}}
+    </div>
+<!-- 
+    <span class="button is-small btn-primary" *ngIf='track.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!track.active' (click)='updateActive(true)'>Active</span> -->
+
+    <span class="button is-small btn-danger" (click)='deleteTrack()'>Delete</span>
+
+    <hr/>
+</div>

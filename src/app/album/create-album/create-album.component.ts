@@ -13,8 +13,7 @@ export class CreateAlbumComponent implements OnInit {
 
   album: Album = new Album();
   selectedArtistId: number
-  artists: Artist[]
-  submitted = false;
+  artists: Artist[]  
 
   constructor(private albumService: AlbumService,
               private artistService: ArtistService) { }
@@ -22,21 +21,16 @@ export class CreateAlbumComponent implements OnInit {
   ngOnInit() {
     this.artistService.getArtistList().subscribe(res => this.artists = res.value)
   }
-
-  newAlbum(): void {
-    this.submitted = false;
-    this.album = new Album();
-  }
+  
 
   save() {
-    this.album["Artist@xdata.ref"] = "Artist("+this.selectedArtistId+")"    
+    this.album["Artist@xdata.ref"] = "Artist("+this.selectedArtistId+")"       
     this.albumService.createAlbum(this.album)
       .subscribe(data => console.log(data), error => console.log(error));
     this.album = new Album();
   }
 
   onSubmit() {
-    this.submitted = true;
     this.save();
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GenreService } from '../genre.service';
+import { Genre } from '../genre';
 
 @Component({
   selector: 'app-create-genre',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateGenreComponent implements OnInit {
 
-  constructor() { }
+  genre: Genre = new Genre();      
 
-  ngOnInit() {
+  constructor(private genreService: GenreService) { }
+
+  ngOnInit() {    
+  }
+  
+
+  save() {          
+    this.genreService.createGenre(this.genre)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.genre = new Genre();
+  }
+
+  onSubmit() {
+    this.save();
   }
 
 }

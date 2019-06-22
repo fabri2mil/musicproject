@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Track } from '../track';
+import { TrackService } from '../track.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-track',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailTrackComponent implements OnInit {
 
-  constructor() { }
+  track: Track;
+
+  constructor(private trackService: TrackService, 
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.reloadData()
   }
+
+  reloadData() {
+    this.trackService.getTrack(this.route.snapshot.params.id).subscribe(res => {
+      this.track = res as Track;
+      console.log(this.track)
+    });        
+  }
+
 
 }

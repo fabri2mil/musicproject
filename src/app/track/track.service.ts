@@ -13,7 +13,7 @@ export class TrackService {
     constructor(private http: HttpClient) { }
 
     getTrack(id: number): Observable<Object> {        
-        return this.http.get(environment.url + this.baseComponentUrl + '(' + id as string + ')');
+        return this.http.get(environment.url + this.baseComponentUrl + '(' + id as string + ')/?$expand=Genre');
     }
 
     getTrackList(): Observable<any> {                

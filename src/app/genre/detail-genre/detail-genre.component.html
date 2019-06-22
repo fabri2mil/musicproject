@@ -1,3 +1,16 @@
-<p>
-  detail-genre works!
-</p>
+<div *ngIf="genre">
+    <div>
+        <label>Id: </label> {{genre.Id}}
+    </div>
+    <div>
+        <label>Nome: </label> {{genre.Name}}
+    </div>        
+<!-- 
+    <span class="button is-small btn-primary" *ngIf='genre.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!genre.active' (click)='updateActive(true)'>Active</span> -->
+
+    <span class="button is-small btn-danger" (click)='deleteGenre()'>Delete</span>
+
+    <hr/>
+</div>
