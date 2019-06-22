@@ -1,0 +1,19 @@
+<div *ngIf="album">
+    <div>
+        <label>Id: </label> {{album.Id}}
+    </div>
+    <div>
+        <label>Nome: </label> {{album.Name}}
+    </div>    
+    <div>
+        <label>Artista: </label> {{album.Artist.Name}}
+    </div>
+<!-- 
+    <span class="button is-small btn-primary" *ngIf='album.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!album.active' (click)='updateActive(true)'>Active</span> -->
+
+    <span class="button is-small btn-danger" (click)='deletealbum()'>Delete</span>
+
+    <hr/>
+</div>

@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h1>Albuns</h1>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Nome</th>                  
+                  <th>Deletar</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let album of albums">
+                  <td>{{album.Id}}</td>
+                  <td>{{album.Name}}</td>                  
+                  <td><button (click)="deleteAlbum(album.Id)">Delete</button></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

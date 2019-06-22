@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'http://xdata.simplesi.com.br:2001/tms/music/'
 };
 
 /*
