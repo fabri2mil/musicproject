@@ -14,6 +14,7 @@ import { CreateTrackComponent } from './track/create-track/create-track.componen
 import { DetailTrackComponent } from './track/detail-track/detail-track.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'album'},
   { path: 'album', component: ListAlbumComponent },
   { path: 'album/add', component: CreateAlbumComponent },
   { path: 'album/:id', component: DetailAlbumComponent },  
