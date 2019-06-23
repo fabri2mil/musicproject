@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ArtistService } from '../artist.service';
 import { Artist } from '../artist';
 
@@ -9,14 +9,12 @@ import { Artist } from '../artist';
 })
 export class CreateArtistComponent implements OnInit {
 
-  artist: Artist = new Artist();      
-
+  artist: Artist = new Artist();        
   constructor(private artistService: ArtistService) { }
 
   ngOnInit() {    
   }
   
-
   save() {          
     this.artistService.createArtist(this.artist)
       .subscribe(data => console.log(data), error => console.log(error));

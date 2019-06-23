@@ -25,7 +25,7 @@ export class AlbumService {
     }
 
     updateAlbum(id: number, value: any): Observable<Object> {
-        return this.http.put(environment.url + this.baseComponentUrl + id as string, value);
+        return this.http.put(environment.url + this.baseComponentUrl +'('+ id as string + ')', value);
     }
 
     deleteAlbum(id: number): Observable<any> {

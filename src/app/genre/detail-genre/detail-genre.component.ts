@@ -26,4 +26,13 @@ export class DetailGenreComponent implements OnInit {
     });        
   }
 
+  update() {          
+    this.genreService.updateGenre(this.route.snapshot.params.id, this.genre)
+      .subscribe(data => console.log(data), error => console.log(error));          
+  }
+
+  onSubmit() {
+    this.update();
+  }
+
 }

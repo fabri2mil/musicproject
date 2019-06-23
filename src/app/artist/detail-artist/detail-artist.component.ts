@@ -10,7 +10,7 @@ import { Artist } from '../artist';
 })
 export class DetailArtistComponent implements OnInit {
 
-  artist: Artist;
+  artist: Artist = {Id:1, Name: "teste"};
 
   constructor(private artistService: ArtistService, 
               private route: ActivatedRoute) { }
@@ -24,6 +24,15 @@ export class DetailArtistComponent implements OnInit {
       this.artist = res as Artist;
       console.log(this.artist)
     });        
+  }
+
+  update() {          
+    this.artistService.updateArtist(this.route.snapshot.params.id, this.artist)
+      .subscribe(data => console.log(data), error => console.log(error));          
+  }
+
+  onSubmit() {
+    this.update();
   }
 
 }

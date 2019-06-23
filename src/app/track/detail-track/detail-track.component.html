@@ -1,19 +1,24 @@
 <div *ngIf="track">
-    <div>
-        <label>Id: </label> {{track.Id}}
-    </div>
-    <div>
-        <label>Nome: </label> {{track.Name}}
-    </div>    
-    <div>
-        <label>Artista: </label> {{track.Genre.Name}}
-    </div>
-<!-- 
-    <span class="button is-small btn-primary" *ngIf='track.active' (click)='updateActive(false)'>Inactive</span>
-
-    <span class="button is-small btn-primary" *ngIf='!track.active' (click)='updateActive(true)'>Active</span> -->
-
-    <span class="button is-small btn-danger" (click)='deleteTrack()'>Delete</span>
-
-    <hr/>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="track.Name" name="name">
+            </div>    
+            
+            <div class="form-group">
+                <label for="composer">Compositor</label>
+                <input type="text" class="form-control" id="composer" required [(ngModel)]="track.Composer" name="composer">
+            </div>    
+    
+            <div class="form-group">
+                <label for="genre">Genero</label>
+                <select class="form-control" id="genre" [(ngModel)]="selectedGenreId" name="genre">
+                    <option *ngFor="let genre of genres" [value]="genre.Id">{{genre.Name}}</option>              
+                </select>            
+            </div>
+    
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>        
 </div>

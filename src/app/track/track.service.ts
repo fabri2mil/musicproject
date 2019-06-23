@@ -25,7 +25,7 @@ export class TrackService {
     }
 
     updateTrack(id: number, value: any): Observable<Object> {
-        return this.http.put(environment.url + this.baseComponentUrl + id as string, value);
+        return this.http.put(environment.url + this.baseComponentUrl +'('+ id as string + ')', value);
     }
 
     deleteTrack(id: number): Observable<any> {
