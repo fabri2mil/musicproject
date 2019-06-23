@@ -20,6 +20,10 @@ export class GenreService {
         return this.http.get(environment.url + this.baseComponentUrl);
     }
 
+    getPaginatedGenreList(page:number): Observable<any> {                
+        return this.http.get(environment.url + this.baseComponentUrl + "/?$inlinecount=allpages&$top="+ environment.paging as string +"&$skip=" + (environment.paging * page) as string);
+    }
+
     createGenre(genre: Object): Observable<Object> {
         return this.http.post(environment.url + this.baseComponentUrl, genre);
     }

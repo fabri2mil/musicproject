@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Album } from '../album';
 import { Observable } from 'rxjs';
 import { AlbumService } from '../album.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-album',
@@ -11,17 +12,23 @@ import { AlbumService } from '../album.service';
 export class ListAlbumComponent implements OnInit {
 
   albums: Album[];
-  url: string = "album/add"
-  model: string = "Album"
+  url: string = "album/add";
+  model: string = "Album";
+  totalItems: any
+  itemsPerPage: any
+  currentPage: number = 1
+
   constructor(private albumService: AlbumService) { }
 
   ngOnInit() {
-    this.reloadData()
+    this.itemsPerPage = environment.paging
+    this.reloadData();
   }
 
-  reloadData() {
-    this.albumService.getAlbumList().subscribe(res => {
-      this.albums = res.value
+  reloadData() {    
+    this.albumService.getPaginetedAlbumList(this.currentPage - 1).subscribe(res => {
+      this.albums = res.value;
+      this.totalItems = Math.ceil((res as any)["@xdata.count"]) 
     });        
   }
 
@@ -33,6 +40,11 @@ export class ListAlbumComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
+  }  
+
+  changePage(event: any){    
+    this.currentPage = event.page
+    this.reloadData()
   }
 
 

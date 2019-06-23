@@ -12,17 +12,23 @@
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Detalhe</th>
-                <th>Deletar</th>
+                <th>Ações</th>                
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let genre of genres">
                 <td>{{genre.Id}}</td>
                 <td>{{genre.Name}}</td>  
-                <td><a href="genre/{{genre.Id}}">Ver detalhes</a></td>                
-                <td><button (click)="deleteGenre(genre.Id)">Delete</button></td>
+                <td>    
+                    <a class="btn btn-sm btn-primary" (click)="deleteGenre(genre.Id)" role="button">                    
+                        <i class="material-icons">delete</i>
+                    </a>
+                    <a href="genre/{{genre.Id}}">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </td>                                  
             </tr>
         </tbody>
     </table>
+    <pagination [(totalItems)]="totalItems" [(ngModel)]="currentPage" (pageChanged)="changePage($event)" maxSize="5" rotate="true" boundaryLinks="true" [(itemsPerPage)]="itemsPerPage"></pagination>
 </div>

@@ -20,6 +20,10 @@ export class ArtistService {
         return this.http.get(environment.url + this.baseComponentUrl);
     }
 
+    getPaginatedArtistList(page:number): Observable<any> {                
+        return this.http.get(environment.url + this.baseComponentUrl + "/?$inlinecount=allpages&$top="+ environment.paging as string +"&$skip=" + (environment.paging * page) as string);
+    }
+
     createArtist(artist: Object): Observable<Object> {
         return this.http.post(environment.url + this.baseComponentUrl, artist);
     }

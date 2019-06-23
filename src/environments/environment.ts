@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  paging: 10,
   url: 'http://xdata.simplesi.com.br:2001/tms/music/'
 };
 

@@ -20,6 +20,10 @@ export class TrackService {
         return this.http.get(environment.url + this.baseComponentUrl);
     }
 
+    getPaginatedTrackList(page:number): Observable<any> {                
+        return this.http.get(environment.url + this.baseComponentUrl + "/?$inlinecount=allpages&$top="+ environment.paging as string +"&$skip=" + (environment.paging * page) as string);
+    }
+
     createTrack(track: Object): Observable<Object> {
         return this.http.post(environment.url + this.baseComponentUrl, track);
     }

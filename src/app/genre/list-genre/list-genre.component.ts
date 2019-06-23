@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GenreService } from '../genre.service';
 import { Genre } from '../genre';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-genre',
@@ -12,16 +13,21 @@ export class ListGenreComponent implements OnInit {
   genres: Genre[];
   url: string = "genre/add"
   model: string = "Gênero"
+  totalItems: any
+  itemsPerPage: any
+  currentPage: number = 1
 
   constructor(private genreService: GenreService) { }
 
   ngOnInit() {
+    this.itemsPerPage = environment.paging
     this.reloadData()
   }
 
   reloadData() {
-    this.genreService.getGenreList().subscribe(res => {
-      this.genres = res.value;      
+    this.genreService.getPaginatedGenreList(this.currentPage - 1).subscribe(res => {
+      this.genres = res.value;
+      this.totalItems = Math.ceil((res as any)["@xdata.count"])   
     });        
   }
 
@@ -35,5 +41,9 @@ export class ListGenreComponent implements OnInit {
         error => console.log(error));
   }
 
+  changePage(event: any){    
+    this.currentPage = event.page
+    this.reloadData()
+  }
 
 }
