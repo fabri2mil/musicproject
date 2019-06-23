@@ -11,6 +11,7 @@ import { Artist } from '../artist';
 export class DetailArtistComponent implements OnInit {
 
   artist: Artist = {Id:1, Name: "teste"};
+  message: any
 
   constructor(private artistService: ArtistService, 
               private route: ActivatedRoute) { }
@@ -28,7 +29,17 @@ export class DetailArtistComponent implements OnInit {
 
   update() {          
     this.artistService.updateArtist(this.route.snapshot.params.id, this.artist)
-      .subscribe(data => console.log(data), error => console.log(error));          
+      .subscribe(data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Artista atualizado com sucesso"
+      }, error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      }); 
   }
 
   onSubmit() {

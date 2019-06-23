@@ -15,7 +15,7 @@ export class ListArtistComponent implements OnInit {
   model: string = "Artista"
   totalItems: any
   itemsPerPage: any
-  currentPage: number = 1
+  currentPage: number = 1  
 
   constructor(private artistService: ArtistService) { }
 

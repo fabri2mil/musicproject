@@ -9,7 +9,8 @@ import { Genre } from '../genre';
 })
 export class CreateGenreComponent implements OnInit {
 
-  genre: Genre = new Genre();      
+  genre: Genre = new Genre();  
+  message: any    
 
   constructor(private genreService: GenreService) { }
 
@@ -19,7 +20,18 @@ export class CreateGenreComponent implements OnInit {
 
   save() {          
     this.genreService.createGenre(this.genre)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Gênero salvo com sucesso"
+      },
+      error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      });    
     this.genre = new Genre();
   }
 

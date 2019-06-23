@@ -11,6 +11,7 @@ import { GenreService } from '../genre.service';
 export class DetailGenreComponent implements OnInit {
 
   genre: Genre;
+  message: any    
 
   constructor(private genreService: GenreService, 
               private route: ActivatedRoute) { }
@@ -28,7 +29,18 @@ export class DetailGenreComponent implements OnInit {
 
   update() {          
     this.genreService.updateGenre(this.route.snapshot.params.id, this.genre)
-      .subscribe(data => console.log(data), error => console.log(error));          
+      .subscribe(data => data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Gênero atualizado com sucesso"
+      },
+      error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      });    
   }
 
   onSubmit() {

@@ -14,6 +14,7 @@ export class CreateTrackComponent implements OnInit {
   track: Track = new Track();
   selectedGenreId: number
   genres: Genre[]  
+  message: any    
 
   constructor(private trackService: TrackService,
               private genreService: GenreService) { }
@@ -26,7 +27,18 @@ export class CreateTrackComponent implements OnInit {
   save() {
     this.track["Genre@xdata.ref"] = "Genre("+this.selectedGenreId+")"       
     this.trackService.createTrack(this.track)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Track salvo com sucesso"
+      },
+      error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      });    
     this.track = new Track();
   }
 

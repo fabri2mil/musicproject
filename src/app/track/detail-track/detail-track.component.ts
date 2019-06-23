@@ -15,13 +15,25 @@ export class DetailTrackComponent implements OnInit {
   track: Track;
   selectedGenreId: number
   genres: Genre[]  
+  message: any
   
   constructor(private trackService: TrackService, 
               private genreService: GenreService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.genreService.getGenreList().subscribe(res => this.genres = res.value)    
+    this.genreService.getGenreList().subscribe(data => data => {
+      console.log(data)
+      this.message = {}
+      this.message['success'] = true
+      this.message['text'] = "Gênero atualizado com sucesso"
+    },
+    error => {
+      console.log(error)
+      this.message = {}
+      this.message['success'] = false
+      this.message['text'] = "Preencha o formulario adequadamente"
+    });    
     this.reloadData()
   }
 

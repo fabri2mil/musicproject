@@ -1,5 +1,9 @@
 <div *ngIf="artist">
     <div style="width: 400px;">
+        <div *ngIf="message" class="row">        
+            <span *ngIf="message.success" class="alert alert-success">{{message.text}}</span>
+            <span *ngIf="!message.success" class="alert alert-danger">{{message.text}}</span>
+        </div>
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Nome</label>

@@ -14,6 +14,7 @@ export class CreateAlbumComponent implements OnInit {
   album: Album = new Album();
   selectedArtistId: number
   artists: Artist[]  
+  message: any
 
   constructor(private albumService: AlbumService,
               private artistService: ArtistService) { }
@@ -26,11 +27,22 @@ export class CreateAlbumComponent implements OnInit {
   save() {
     this.album["Artist@xdata.ref"] = "Artist("+this.selectedArtistId+")"       
     this.albumService.createAlbum(this.album)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.album = new Album();
+      .subscribe(
+      data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Album salvo com sucesso"
+      },
+      error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      });    
   }
 
   onSubmit() {
-    this.save();
+    this.save();    
   }
 }

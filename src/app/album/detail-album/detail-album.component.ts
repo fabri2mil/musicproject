@@ -16,6 +16,7 @@ export class DetailAlbumComponent implements OnInit {
   album: Album = new Album();
   selectedArtistId: number
   artists: Artist[]
+  message: any
 
   constructor(private albumService: AlbumService,
               private artistService: ArtistService, 
@@ -36,11 +37,22 @@ export class DetailAlbumComponent implements OnInit {
   update() {
     this.album["Artist@xdata.ref"] = "Artist("+this.selectedArtistId+")"       
     this.albumService.updateAlbum(this.route.snapshot.params.id, this.album)
-      .subscribe(data => console.log(data), error => console.log(error));    
+      .subscribe(data => {
+        console.log(data)
+        this.message = {}
+        this.message['success'] = true
+        this.message['text'] = "Album atualizado com sucesso"
+      }, error => {
+        console.log(error)
+        this.message = {}
+        this.message['success'] = false
+        this.message['text'] = "Preencha o formulario adequadamente"
+      });    
   }
 
   onSubmit() {
     this.update();
+    this.message = "Atualizado com Sucesso"
   }
 
 
